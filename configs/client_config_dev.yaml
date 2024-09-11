@@ -1,0 +1,3 @@
+serverAddr: "127.0.0.1:8080"
+rps: 5
+totalRequests: 20
