@@ -26,7 +26,8 @@ services:
     environment:
       - ENV=dev
       - APP_SERVERADDR=server:8080
-      - APP_RPS=1
+      - APP_RPS=10
+      - APP_TOTALREQUESTS=1000
     networks:
       - word_of_wisdom_network
 

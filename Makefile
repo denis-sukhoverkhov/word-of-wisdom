@@ -37,12 +37,20 @@ run-client:
 	source .env && go run cmd/client/main.go
 
 # Build the Docker image for the server
+.PHONY: docker-build-server
 docker-build-server:
 	docker build -t $(DOCKER_SERVER_IMAGE):$(DOCKER_TAG) -f Dockerfile.server .
 
 # Build the Docker image for the client
+.PHONY: docker-build-client
 docker-build-client:
 	docker build -t $(DOCKER_CLIENT_IMAGE):$(DOCKER_TAG) -f Dockerfile.client .
 
 # Build both server and client Docker images
-docker-build-all: docker-build-server docker-build-client
+.PHONY: docker-build-all
+docker-build-all: 
+	docker-build-server docker-build-client
+
+.PHONY: up
+up: 
+	docker-compose up --build
